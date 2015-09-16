@@ -1,9 +1,8 @@
 //////// Exercise x2:  modularize exercise x1, and add dog to chase hero.
-//////// Whoever Whoever  (CST 112; today's date?)
+//////// Drake  (CST 112; 9/16/15)
 
-//////// Please change these to your name and today's date.
-String author=  "Whoever Whatever";
-String title=  " ??? ";
+String author=  "Drake";
+String title=  " Chasing Square ";
 String help=  " Click to relocate hero \n 'q' to quit; 'r' to reset. ";
 
 
@@ -15,7 +14,7 @@ float dogX, dogY;
 
 //// SETUP:  window size, initialization (start in middle of screen).
 void setup() {
-  size( 640,480);
+  size( 700,700);
   horizon=  height/4;
   x=  width/2;
   y=  height/2;
@@ -49,6 +48,11 @@ void hero() {
   /* INSERT YOUR CODE HERE! */
   /* REPLACE THIS STUB! */  text( "[[[[ Zoog. ]]]]", 200, 200 );
   rect( x,y, 50,80 );
+  x=x+dx;
+  if (x>width-50) dx=-dx;
+  if (x<0) dx=-dx;
+  y= y+dy;
+  if (y<0 || y>height-80){ dy=-dy;}
 }
 void dog() {
   dogX=  dogX - (dogX-x)/30;
@@ -62,13 +66,9 @@ void dog() {
   /* REPLACE THIS STUB! */  text( "woof, woof!d!!", 150, 150 );
 }
 
-
-
-
-
 //////// HANDLERS:  mouse clicks, keys
 void mousePressed() {
-  x=  mouseX;                             // Set (x,y) to mouse
+  x=  mouseX;         // Set (x,y) to mouse
   y=  mouseY;
   //
   dx=  random( -6, +6 );                  // random speed.
@@ -81,6 +81,3 @@ void keyPressed() {
   }
   /* INSERT YOUR CODE HERE! */
 }
-   
-   
-
