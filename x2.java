@@ -14,7 +14,7 @@ float dogX, dogY;
 
 //// SETUP:  window size, initialization (start in middle of screen).
 void setup() {
-  size( 700,700);
+  size( 640,480);
   horizon=  height/4;
   x=  width/2;
   y=  height/2;
@@ -46,7 +46,7 @@ void messages() {
 //// ACTION:  move (x,y) coordinates of hero & dog; show them.
 void hero() {
   /* INSERT YOUR CODE HERE! */
-  /* REPLACE THIS STUB! */  text( "[[[[ Zoog. ]]]]", 200, 200 );
+  /* REPLACE THIS STUB! */  text( "Jimmy", 200, 200 );
   rect( x,y, 50,80 );
   x=x+dx;
   if (x>width-50) dx=-dx;
@@ -61,7 +61,8 @@ void dog() {
   text( dogY, 10, 20 );
   //
   fill( 150,0,0 );
-  rect(dogX,dogY, 60,30 );
+  //rect(dogX,dogY, 50,30 );
+  ellipse(dogX,dogY,50,30);
   /* INSERT YOUR CODE HERE! */
   /* REPLACE THIS STUB! */  text( "woof, woof!d!!", 150, 150 );
 }
