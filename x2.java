@@ -45,9 +45,16 @@ void messages() {
 
 //// ACTION:  move (x,y) coordinates of hero & dog; show them.
 void hero() {
-  /* INSERT YOUR CODE HERE! */
-  /* REPLACE THIS STUB! */  text( "Jimmy", 200, 200 );
-  rect( x,y, 50,80 );
+  fill(50,80,150); 
+  rect( x,y, 30,50 );
+  fill(255,0,0);
+  ellipse(x+15,y-11,20,20);  
+  fill(255,255,0);
+  stroke(255,255,0);          //Puppet Sting//
+  line(x+15,y-11,350,80);  
+  stroke(0);
+  fill(255);
+  text( "Jimmy", x,y+30 );
   x=x+dx;
   if (x>width-50) dx=-dx;
   if (x<0) dx=-dx;
