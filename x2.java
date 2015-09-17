@@ -11,6 +11,7 @@
   float x, y;       // Position.
   float dx, dy;     // Speed.
   float dogX, dogY;
+  float sunX, sunY;
 
   //// SETUP:  window size, initialization (start in middle of screen).
   void setup() {
@@ -20,6 +21,8 @@
   y=  height/2;
   dx=  3;
   dy=  2;
+  sunX=width*3/4;
+  sunY=height/8;
   }
 
   //// NEXT FRAME:  scene, action, show.
@@ -34,6 +37,9 @@
   void scene() {  
 background( 100,200,250 );                // sky
   fill( 255,255,0 );
+  sunX= (sunX+1) % (width+150);
+ 
+  ellipse( sunX,sunY, 40,40 );    // sun
   
   fill( 100,200,100 );
   rect( 0,horizon, width,height*3/4 );      // grass.
