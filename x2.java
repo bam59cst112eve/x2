@@ -1,5 +1,6 @@
 //////// Exercise x2:  modularize exercise x1, and add dog to chase hero.
 //////// Justin Acosta  (CST 112; 9/23)
+//
 
 String author=  "Justin Acosta 9/23";
 String title=  " Good Morning! ";
