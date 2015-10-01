@@ -1,9 +1,8 @@
 //////// Exercise x2:  modularize exercise x1, and add dog to chase hero.
 //////// Justin Acosta  (CST 112; 9/23)
 
-//////// Please change these to your name and today's date.
 String author=  "Justin Acosta 9/23";
-String title=  "  ";
+String title=  " Good Morning! ";
 String help=  " Click to relocate hero \n 'q' to quit; 'r' to reset. ";
 
 
@@ -12,7 +11,7 @@ float horizon;
 float x, y;       // Position.
 float dx, dy;     // Speed.
 float dogX, dogY;
-float z;
+float z;            //Sun Postion
 //// SETUP:  window size, initialization (start in middle of screen).
 void setup() {
   size( 640,480);
@@ -30,19 +29,18 @@ void draw() {
   hero();
   dog();
   messages();
+  bounce();
+  sunRise();
+  
 }
 
 //// SCENE:  sky, sun, tree, house, etc.
 void scene() {  
-    stroke(0);
+     z = z + 1;                 //Movement of sun
+
+  stroke(0);
   strokeWeight(1);
   background( 60,100,z+110 );    // sky, sky changes with sun position
-  
- 
-  
-  
-  
-    z = z + 1;                 //Movement of sun
 
   // Sunlight and values
   fill(255, 255, 255, 20);                      
@@ -59,17 +57,7 @@ void scene() {
   fill( 255,255,0 );
   ellipse( z, height/8, 60,60 ); 
   
-  if (z > width){          // Sunrise and Sunset
-    z = 0;
-  }
-  
-  
-  
-  
-
-  
-  
-  // The Suns's Eyes 
+   // The Suns's Eyes 
   stroke(0);
   fill(255);
   ellipse( z-12, height/8-2, 20, 10);
@@ -78,13 +66,6 @@ void scene() {
   ellipse( z-9, height/8-2, 10, 5);
   ellipse( z+17, height/8-2, 10, 5);
 
-  
-  
-  
-  
-  
-
-  
   // Suns' Smile
   fill(255,0,0);
   arc(z+1, height/8+8, 30, 30, HALF_PI/17, PI);
@@ -101,40 +82,39 @@ void scene() {
   fill(100,200,100);
   triangle( horizon+10,horizon-25, horizon+35,horizon-100, horizon+50,horizon-25  );  // tree
   
-                        
-     // House
+   // House
   fill(200,50,50);
   rect(200, horizon-60, 80, 60);   
   fill(0);
   triangle(185, horizon-60, 245, horizon-90, 300, horizon-60); 
   fill(0);
   rect(245, horizon-30, 15, 30);
+  
+}
+             
+    void sunRise() {                                      
+    if (z > width){          // Sunrise and Sunset
+    z = 0;
+  }                              
                                             
-                                            
-                                           
-       
-
-
-
-
-
-                                            
-                                           
 }
 
+
 void messages() {
+  textSize(10);
   text( title, width/3, 20 );
   text( help, width*2/3, 30 );
+  textSize(20);
   text( author, 10,height-20 );
 }
 
 //// ACTION:  move (x,y) coordinates of hero & dog; show them.
 void hero() {
-  /* INSERT YOUR CODE HERE! */
-   x=  x + dx;
-  y=  y + dy;
   
-  //// SHOW:  display the creature at (x,y)
+   x=  x + dx;
+   y=  y + dy;
+  
+  
   
   // Head of character
   fill(255,200,200);               // Head
@@ -146,9 +126,10 @@ void hero() {
 
   // Body of character
   fill(255,0,0); 
-  rect( x,y, 33,60 );
+  rect( x,y, 34,60 );
+  textSize(11);
   fill(0);
-  text( "Justin", x,y+15 );    // Name
+  text( "Justin", x+2,y+15 );    // Name
   
   // Hat
   fill(0,0,255); 
@@ -167,9 +148,9 @@ void hero() {
   line(x, y, x-20, y-9);
   line(x+33, y, x+54, y-17);
   
- 
-  
-  
+}
+
+void bounce(){
   // Bouce off Walls
   if ( x > width - 30){
   dx = dx -1;
@@ -251,4 +232,3 @@ void keyPressed() {
 }
    
    
-
