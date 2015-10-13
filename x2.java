@@ -1,8 +1,8 @@
 //////// Exercise x2:  modularize exercise x1, and add dog to chase hero.
-//////// Justin Acosta  (CST 112; 9/23)
+//////// Justin Acosta  (CST 112; 10/3)
 //
 
-String author=  "Justin Acosta 9/23";
+String author=  "Justin Acosta 10/3";
 String title=  " Good Morning! ";
 String help=  " Click to relocate hero \n 'q' to quit; 'r' to reset. ";
 
