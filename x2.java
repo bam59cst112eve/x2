@@ -13,6 +13,8 @@ float x, y;       // Position.
 float dx, dy;     // Speed.
 float dogX, dogY;
 float z;            //Sun Postion
+int count;         // framecounter for animation
+
 //// SETUP:  window size, initialization (start in middle of screen).
 void setup() {
   size( 640,480);
@@ -26,6 +28,7 @@ void setup() {
 
 //// NEXT FRAME:  scene, action, show.
 void draw() {
+  count= count + 1;  //count increases by one on each frame.
   scene();
   hero();
   dog();
@@ -44,10 +47,18 @@ void scene() {
   background( 60,100,z+110 );    // sky, sky changes with sun position
 
   // Sunlight and values
+  if (count / 30 % 2 == 0){           //Sunlight Animation
   fill(255, 255, 255, 20);                      
   noStroke();
   ellipse(z, height/8, 140, 140);
-  fill(255, 255, 255, 40);
+  fill(255, 255, 255, 60);                    
+  noStroke();
+  ellipse(z, height/8, 90, 90);
+  }else{
+  }
+  
+  
+  fill(255, 255, 255, 40);           //Sunlight Static
   noStroke();
   ellipse(z, height/8, 120, 120);
   fill(255, 255, 255, 60);                    
@@ -145,9 +156,17 @@ void hero() {
   
   
   // Arms
-  stroke(0);
+  stroke(255, 0, 0);
+  strokeWeight(3);
+  if (count / 30 % 2 == 0){                 //Arms Animation
   line(x, y, x-20, y-9);
   line(x+33, y, x+54, y-17);
+  }else{
+  line(x, y, x-10, y-19);
+  line(x+33, y, x+44, y-27);
+  }
+  stroke(0);
+  strokeWeight(1);
   
 }
 
@@ -186,14 +205,31 @@ void dog() {
   
   strokeWeight(6);
   stroke(255);
+  if (count / 30 % 2 == 0){                    ///Dog Tail Animation
   line(dogX+60, dogY, dogX + 80, dogY - 30);   /// Dog Tail
-  
+  }else{
+  line(dogX+60, dogY, dogX + 70, dogY - 35); 
+  }
+ 
   strokeWeight(6);    // Dog Legs
   stroke(255);
-  line(dogX, dogY+20, dogX-20, dogY+40);
-  line(dogX+20, dogY+20, dogX-10, dogY+50);
-  line(dogX+55, dogY + 5, dogX+60, dogY+50);
+                                              // Front Leg Animation
+  if (count / 30 % 2 == 0){                   
+  line(dogX, dogY+20, dogX-20, dogY+40);      //front legs
+  line(dogX+20, dogY+20, dogX-10, dogY+50);   
+  }else{
+  line(dogX, dogY+20, dogX-30, dogY+30);      
+  line(dogX+20, dogY+20, dogX-20, dogY+40); 
+  }
+  
+  //Back Leg Animation
+  if (count / 30 % 2 == 0){
+  line(dogX+55, dogY + 5, dogX+60, dogY+50);  //back legs
   line(dogX+60, dogY + 5, dogX+ 45, dogY+50);
+  }else{
+  line(dogX+55, dogY + 5, dogX+80, dogY+45);  
+  line(dogX+60, dogY + 5, dogX+65, dogY+45);
+  }
   
   noStroke();                          ///Dog Spots
   fill(0);
